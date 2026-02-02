@@ -9,9 +9,9 @@ const Card = ({ product, onAction }) => {
     try {
       await axios.post(`${VITE_API_BASE}/api/${VITE_API_PATH}/cart`, data);
       onAction('success', `成功加入 ${qty} 件商品！`);
-    } catch (err) {
-      console.error('[AddToCart Error]', err);
-      onAction('fail', '庫存不足，無法加入購物車');
+    } catch (error) {
+      console.error('加入失敗', error);
+      onAction('fail', '無法加入購物車');
     }
   };
 

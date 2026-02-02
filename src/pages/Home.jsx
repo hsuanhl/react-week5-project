@@ -17,17 +17,17 @@ const Home = () => {
     }, 3000);
   };
 
-  useEffect(()=>{
-    const fetchData = async() => {
+  useEffect(() => {
+    const fetchData = async () => {
       try {
-        const response = await axios.get(`${VITE_API_BASE}/api/${VITE_API_PATH}/products`)
-        setProducts(response.data.products.slice(0, 3))
+        const response = await axios.get(`${VITE_API_BASE}/api/${VITE_API_PATH}/products`);
+        setProducts(response.data.products.slice(0, 3));
       } catch (error) {
-        console.log(error)
+        console.error('查詢失敗', error);
       }
     };
-    fetchData()
-  },[])
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -51,29 +51,23 @@ const Home = () => {
         </div>
       </header>
 
-       <section className="max-w-7xl mx-auto py-24 px-6">
-      <div className="flex justify-between items-end mb-4">
+      <section className="max-w-7xl mx-auto py-24 px-6">
+        <div className="flex justify-between items-end mb-4">
           <h2 className="text-3xl font-light text-[#5d6a80]">精選單品</h2>
-        <NavLink to="/products" className="text-[#7c869c] hover:underline transition-all">查看全部 →</NavLink>
-      </div>
+          <NavLink to="/products" className="text-[#7c869c] hover:underline transition-all">
+            查看全部 →
+          </NavLink>
+        </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
-        {products.map((product) => {
-          return(
-            <Card product={product} key={product.id} onAction={triggerPopup}/>
-          )
-        })}
-      </div>
-
-
-    </section>
-            {popupInfo.show && (
-        <Popup type={popupInfo.type} message={popupInfo.message} />
-      )}
-
-
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          {products.map(product => {
+            return <Card product={product} key={product.id} onAction={triggerPopup} />;
+          })}
+        </div>
+      </section>
+      {popupInfo.show && <Popup type={popupInfo.type} message={popupInfo.message} />}
     </>
   );
-}
+};
 
 export default Home;

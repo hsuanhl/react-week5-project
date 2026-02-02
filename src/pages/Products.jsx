@@ -32,13 +32,13 @@ const Products = () => {
       setProducts(prev => [...prev, ...response.data.products]);
       setPagination(response.data.pagination);
     } catch (error) {
-      console.log(error);
+      console.error('查詢失敗', error);
     } finally {
       setIsLoading(false);
     }
   };
 
-const triggerPopup = (type, message) => {
+  const triggerPopup = (type, message) => {
     setPopupInfo({ show: true, type, message });
     setTimeout(() => {
       setPopupInfo(prev => ({ ...prev, show: false }));
@@ -89,12 +89,10 @@ const triggerPopup = (type, message) => {
             )}
           </div>
         </div>
-        {popupInfo.show && (
-        <Popup type={popupInfo.type} message={popupInfo.message} />
-      )}
+        {popupInfo.show && <Popup type={popupInfo.type} message={popupInfo.message} />}
       </div>
     </>
   );
-}
+};
 
 export default Products;

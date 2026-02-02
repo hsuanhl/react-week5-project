@@ -1,8 +1,5 @@
 const Popup = ({ type, message }) => {
   const isSuccess = type === 'success';
-
-  console.log(isSuccess)
-
   return (
     <>
       <div

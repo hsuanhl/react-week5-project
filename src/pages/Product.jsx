@@ -39,9 +39,9 @@ const Product = () => {
     try {
       await axios.post(`${VITE_API_BASE}/api/${VITE_API_PATH}/cart`, data);
       triggerPopup('success', `成功加入 ${qty} 件商品！`);
-    } catch (err) {
-      console.error('[AddToCart Error]', err);
-      triggerPopup('fail', '庫存不足，無法加入購物車');
+    } catch (error) {
+      console.error('加入失敗', error);
+      triggerPopup('fail', '無法加入購物車');
     }
   };
 
@@ -53,7 +53,7 @@ const Product = () => {
         setProduct(response.data.product);
         setMainPic(response.data.product.imageUrl);
       } catch (error) {
-        console.error('抓取失敗', error);
+        console.error('查詢失敗', error);
       } finally {
         setIsLoading(false);
       }
