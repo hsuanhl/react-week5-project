@@ -6,7 +6,7 @@ import Popup from '../components/Popup';
 
 const { VITE_API_BASE, VITE_API_PATH } = import.meta.env;
 
-function Home() {
+const Home = () => {
   const [products, setProducts] = useState([]);
   const [popupInfo, setPopupInfo] = useState({ show: false, type: '', message: '' });
 

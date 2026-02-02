@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
 
-function Header() {
+const Header = () => {
   return (
     <>
       <nav className="fixed top-0 w-full h-[70px] bg-white/70 backdrop-blur-md border-b border-black/5 flex items-end gap-8 pb-4 px-6 md:px-12 z-50">
