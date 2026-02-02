@@ -121,7 +121,7 @@ const Product = () => {
                   <button onClick={handleMinus} className="w-8 text-slate-400 hover:text-slate-700 cursor-pointer">
                     -
                   </button>
-                  <input type="number" value={qty} className="w-12 text-center outline-none bg-transparent" readOnly />
+                  <input type="text" value={qty} className="w-12 text-center outline-none bg-transparent" readOnly />
                   <button onClick={handleAdd} className="w-8 text-slate-400 hover:text-slate-700 cursor-pointer">
                     +
                   </button>
